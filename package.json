@@ -7,4 +7,3 @@
   "main": "./lib/express-dialect",
   "engines": { "node": ">= 0.1.98" }
 }
-
