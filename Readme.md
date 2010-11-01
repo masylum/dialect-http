@@ -10,7 +10,7 @@ Features:
   * An amazing helper t() that you can use to translate your views.
   * A super awesome backend tool to manage your translations.
 
-<img src = "http://github.com/masylum/express-dialect/blob/master/lib/public/images/example.jpg" border = "0" />
+<img src = "http://github.com/masylum/express-dialect/raw/master/lib/public/images/example.jpg" border = "0" />
 
 ## How does it work?
 
