@@ -1,0 +1,34 @@
+-if (category !== 'All')
+  h1#breadcrumbs
+    a(href: '/' + locale + '/') All
+    &raquo;
+    = category
+-else if (locale !== dialect.config('base_locale'))
+  -var percent = parseInt(((count/translations.length)*100), 10)
+  h1.bars= count + '/' + translations.length + ' translated'
+  div.bars
+    a(href: '/' + locale + '/translated/', style: 'background:#6d6;width:' + percent + '%;') &nbsp
+    a(href: '/' + locale + '/untranslated/', style: 'width:' + (100 - percent) + '%;') &nbsp
+    .clearer
+
+h2.title= dialect.config('base_locale')
+
+-if (locale !== dialect.config('base_locale'))
+  h2.title= locale
+
+.clearer
+
+-each translation in translations
+  form(action: '/' + locale + '/translate/', method: 'POST', class: translation.translation ? 'ok' : 'pending')
+    textarea.original(name: 'original', readonly: true)= translation.original
+
+    -if (locale !== dialect.config('base_locale'))
+      textarea.translation(name: 'translation')= translation.translation || ''
+
+      -if (translation.translation)
+        span.ok ✓
+      -else
+        span.pending ✗
+
+      input(value: translation.translation ? 'Edit' : 'Add', type: 'submit', class:'submit')
+  .clearer

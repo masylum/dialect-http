@@ -1,0 +1,1 @@
+{"This is an example of translations using dialect":{"translation":null},"Click on the links below or change your browser language to spanish/english":{"translation":null},"Switch to spanish":{"translation":null},"Switch to english":{"translation":null},"Manage translations":{"translation":null},"Title":{"translation":"Titulo"},"Subtitle":{"translation":"Subtitulo"}}

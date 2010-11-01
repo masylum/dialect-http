@@ -1,0 +1,9 @@
+-if (hasFlashMessages)
+  #flash_messages
+    -each msgs,type in types
+      div(class: 'box '+type)
+        h2= type
+        ul
+          -each msg in msgs
+            li= msg
+

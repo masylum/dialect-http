@@ -1,0 +1,22 @@
+!!!
+html
+  head
+    title= title || ''
+    link(rel: 'stylesheet', href: '/css/reset.css' )
+    link(rel: 'stylesheet', href: '/css/global.css' )
+  body
+    nav#header
+      .wrapper
+        #logo= options.title || 'dialect'
+        ul#locales
+          -each loc in dialect.config('locales')
+            li
+              a(href: '/' + loc + '/', class: loc === locale ? 'selected' : '')
+                = loc
+                = loc === dialect.config('base_locale') ? ' (base)' : ''
+    .clearer
+
+    .wrapper
+      #content
+        != flashMessages()
+        != body
