@@ -59,9 +59,10 @@ div.bars {
   -webkit-border-radius: 2px;
   -moz-border-radius:    2px;
   border-radius:         2px;
-  -moz-box-shadow:inset 1px 1px 1px #ccc;
-  -webkit-box-shadow:inset 1px 1px 1px #ccc;
-  box-shadow:inset 1px 1px 1px #aaa;
+  -moz-box-shadow:   inset 1px 1px 0px #ddd;
+  -webkit-box-shadow:inset 1px 1px 0px #ddd;
+  box-shadow:        inset 1px 1px 0px #ddd;
+  padding:4px;
 }
 
 div.bars a {
@@ -95,6 +96,9 @@ form {
   border-radius:         2px;
   position:relative;
   float:left;
+  -moz-box-shadow:    1px 1px 0px #eee;
+  -webkit-box-shadow: 1px 1px 0px #eee;
+  box-shadow:         1px 1px 0px #eee;
 }
 
 span.ok,
@@ -103,24 +107,28 @@ span.pending {
   top:25px;
   left:-30px;
   font-size:40px;
-  text-shadow:0px 1px 0px #fff;
+  text-shadow:1px 1px 0px #ddd;
 }
 span.ok{
   color:#6d6;
 }
 span.pending {
-  color:#ccc;
+  color:#eee;
+}
+form:hover span.pending {
+  color:#fdd;
 }
 
 textarea.original {
   background:none;
-  border:1px solid #f9f9f9;
-}
-textarea.original:hover {
   border-top:1px solid #eee;
   border-left:1px solid #eee;
   border-bottom:1px solid #fff;
   border-right:1px solid #fff;
+}
+textarea.original:hover {
+  border-top:1px solid #ddd;
+  border-left:1px solid #ddd;
 }
 textarea.original ,
 textarea.translation {
@@ -169,10 +177,11 @@ input.submit {
   float:left;
   text-shadow:0px -1px 0px #666;
   color:#fff;
-  background: #000 url(/images/x_sprite.png) repeat-x 0px -60px;
+  background: #000 url(/images/x_sprite.png) repeat-x 0px -90px;
   height:82px;
   width:100px;
 }
 input.submit:hover {
   text-decoration:underline;
+  background: #000 url(/images/x_sprite.png) repeat-x 0px -60px;
 }

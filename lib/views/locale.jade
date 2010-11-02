@@ -11,11 +11,6 @@
     a(href: '/' + locale + '/untranslated/', style: 'width:' + (100 - percent) + '%;') &nbsp
     .clearer
 
-h2.title= dialect.config('base_locale')
-
--if (locale !== dialect.config('base_locale'))
-  h2.title= locale
-
 .clearer
 
 -each translation in translations

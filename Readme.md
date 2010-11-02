@@ -1,7 +1,9 @@
 # ExpressDialect
 
 ExpressDialect is a "pluggable" express application that deals with i18n.
+
 This module is builtin upon [dialect](http://github.com/masylum/dialect/), the nodejs alternative to gettext.
+
 Currently [dialect](http://github.com/masylum/dialect/) just provides a MongoDB store,
 so you need MongoDB to be installed and running.
 
