@@ -12,7 +12,7 @@ so you need MongoDB to be installed and running.
   * An amazing helper _t()_ that you can use to translate your views.
   * A super awesome backend GUI tool to manage your translations.
 
-<img src = "http://github.com/masylum/express-dialect/raw/master/lib/public/images/example.jpg" border = "0" />
+<img src = "https://github.com/masylum/express-dialect/raw/master/lib/public/images/example.jpg" border = "0" />
 
 ## How does it work?
 
