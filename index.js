@@ -1,1 +1,1 @@
-exports = require('./lib/express-dialect');
+module.exports = require('./lib/express-dialect');
