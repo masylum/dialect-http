@@ -4,19 +4,23 @@ html
     title= title || ''
     link(rel: 'stylesheet', href: '/css/reset.css' )
     link(rel: 'stylesheet', href: '/css/global.css' )
+    script(src: 'http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js')
+    script(src: '/js/loading.js')
+    script(src: '/js/translate.js')
+    script(src: '/js/global.js')
   body
     nav#header
       .wrapper
         #logo= options.title || 'dialect'
         ul#locales
           -each loc in dialect.config('locales')
-            li
-              a(href: '/' + loc + '/', class: loc === locale ? 'selected' : '')
-                = loc
-                = loc === dialect.config('base_locale') ? ' (base)' : ''
+            -if (loc !== dialect.config('base_locale'))
+              li
+                a(href: '/' + loc + '/', class: loc === locale ? 'selected' : '')
+                  = loc
     .clearer
 
     .wrapper
       #content
-        != flashMessages()
+        -//!= flashMessages()
         != body

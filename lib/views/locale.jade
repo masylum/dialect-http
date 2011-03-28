@@ -1,29 +1,57 @@
+input(type: 'hidden', name: 'current_locale', value: locale, id: 'current_locale')
+input(type: 'hidden', name: 'base_locale', value: dialect.config('base_locale'), id: 'base_locale')
+
 -if (category !== 'All')
   h1#breadcrumbs
     a(href: '/' + locale + '/') All
     &raquo;
     = category
 -else if (locale !== dialect.config('base_locale'))
-  -var percent = parseInt(((count/translations.length)*100), 10)
-  h1.bars= count + '/' + translations.length + ' translated'
+  -var percent_ok = parseInt(((count_ok/count)*100), 10)
+  -var percent_pending = parseInt(((count_pending/count)*100), 10)
+  h1.bars
+    = count_ok + ' translated, '
+    = count_pending + ' pending, '
+    = count + ' total'
   div.bars
-    a(href: '/' + locale + '/translated/', style: 'background:#6d6;width:' + percent + '%;') &nbsp
-    a(href: '/' + locale + '/untranslated/', style: 'width:' + (100 - percent) + '%;') &nbsp
-    .clearer
+    a.ok(href: '/' + locale + '/translated/', style: 'width:' + percent_ok + '%;') &nbsp
+    a.pending(href: '/' + locale + '/untranslated/', style: 'width:' + (percent_pending) + '%;') &nbsp
+    a.missing(href: '/' + locale + '/untranslated/', style: 'width:' + (100 - percent_ok - percent_pending) + '%;') &nbsp
+  .clearer
 
 .clearer
 
 -each translation in translations
-  form(action: '/' + locale + '/translate/', method: 'POST', class: translation.translation ? 'ok' : 'pending')
-    textarea.original(name: 'original', readonly: true)= translation.original
+  -var stat = translation.translation ? (translation.locale.split('-')[0] === 'pending' ? 'pending' : 'ok') : 'missing';
+  form(action: '/' + locale + '/translate/', method: 'POST', class: stat, autocomplete: 'off')
+    .badge
+    input(type: 'hidden', name: 'original', value: translation.original)
+    .original
+      = translation.original
+      = translation.locale
+    textarea.translation(name: 'translation')= translation.translation || ''
 
-    -if (locale !== dialect.config('base_locale'))
-      textarea.translation(name: 'translation')= translation.translation || ''
-
-      -if (translation.translation)
-        span.ok ✓
+    .options
+      a.get_original(href: '#')
+        span get original
+      a.autotranslate(href: '#')
+        span autotranslate
+      a.clean(href: '#')
+        span clean
+      -if (translation.locale !== locale)
+        a.approve(href: '#')
+          span approve
       -else
-        span.pending ✗
+        a.reject(href: '#')
+          span reject
+    .meta
+      -if (translation.context)
+        span.context
+          |  Context:
+          = translation.context
 
-      input(value: translation.translation ? 'Edit' : 'Add', type: 'submit', class:'submit')
+      -if (translation.plural)
+        span.plural
+          |  Plural form:
+          = translation.plural
   .clearer

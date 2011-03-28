@@ -1,88 +1,60 @@
-# ExpressDialect
+# dialect-http
 
-ExpressDialect is a "pluggable" express application that deals with i18n.
+dialect-http is a web client to manage your dialect translations.
 
-This module is builtin upon [dialect](http://github.com/masylum/dialect/), the nodejs alternative to gettext.
-
-Currently [dialect](http://github.com/masylum/dialect/) just provides a MongoDB store,
-so you need MongoDB to be installed and running.
-
-## Features
-
-  * An amazing helper _t()_ that you can use to translate your views.
-  * A super awesome backend GUI tool to manage your translations.
+This module is builtin upon [dialect](http://github.com/masylum/dialect/).
 
 <img src = "https://github.com/masylum/express-dialect/raw/master/lib/public/images/example.jpg" border = "0" />
+
+## Installation
+
+    npm install dialect-http
+
+## Configuration options
+
+  - `title`: Custom title for the backend.
+  - `username`: Username to authenticate. Defaults to 'admin'
+  - `password`: Password to authenticate. Defaults to 'admin'
+  - `port`: Port number where the application will be running.
+  - `dialect`: Object containing dialect options.
+
+Check [dialect](http://github.com/masylum/dialect/) documentation to see which dialect options can you pass.
 
 ## How does it work?
 
 Easy!
-Imagine you have this express application:
 
-    var express = require('express'),
-        app = express.createServer(),
-        connect = require('connect');
+First edit a configuration file like this:
 
-    app.get('', function (req, res) {
-      res.render('index', {layout: null});
-    });
+    // dialect-http.js
+    exports = {
+      title: 'My app',
+      username: 'foo',
+      password: 'bar',
+      port: 3001,
 
-    app.listen(3000);
+      dialect: {
+        locales: ['en', 'es'],
+        store: {
+          mongodb: {
+            collection: 'my_translations
+          }
+      }
+    }
 
-To "plug" espress_dialect you just need to:
+    $ dialect-http --config dialect-http.js
 
-    npm install express-dialect
+Open your browser and type "http://yordomain.com:3001".
 
-and then add some lines to your app.
+## License
 
-    var express = require('express'),
-        app = express.createServer(),
-        connect = require('connect'),
+(The MIT License)
 
-        express_dialect = require('./../lib/express-dialect'),
-        dialect_options = {
-          app: app,
-          path: __dirname + '/data',
-          title: 'dialect test',
-          store: 'mongodb',
-          database: 'translations'
-        };
+Copyright (c) 2010-2011 Pau Ramon <masylum@gmail.com>
 
-    express_dialect(dialect_options, function (error, dialect) {
-      app.dynamicHelpers(dialect.dynamic_helpers); // makes t() available
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-      app.get('', function (req, res) {
-        res.render('index', {layout: null});
-      });
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-      app.listen(3000);
-      dialect.app.listen(3001); // Starts express-dialect on port 3001
-    });
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-Now open your views and make your strings available to translate.
-
-    h1= t('Post')
-    p= t(post.body)
-
-Open your browser and type "http://localhost:3001", if you didn't provide a custom user password type 'admin' and 'admin'.
-
-OMG! Double rainbow! its amazing, isn't it?
-
-## Configuration options
-
-  - *app*: Your current express app.
-  - *path*: Where you want to store the JSON files with the cached translations.
-  - *store*: 'mongodb'. Other stores will be implemented soon.
-  - *database*: 'translations'. Database name you want to store the translations.
-  - *title* (optional): Custom title for the backend admin.
-  - *username* (optional): username to authenticate. Defaults to 'admin'
-  - *password* (optional): password to authenticate. Defaults to 'admin'
-
-## TODO
-
-Don't hesitate on forking the project!
-
-  * Compatibilililitity with dialect's API (counts and contexts missing)
-  * Show languages names. (en => English)
-  * Make the helper visible, not just on the views.
-  * Dashboard on the homepage
