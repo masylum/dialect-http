@@ -7,12 +7,13 @@ input(type: 'hidden', name: 'base_locale', value: dialect.config('base_locale'),
     &raquo;
     = category
 -else if (locale !== dialect.config('base_locale'))
-  -var percent_ok = parseInt(((count_ok/count)*100), 10)
-  -var percent_pending = parseInt(((count_pending/count)*100), 10)
+  -var percent_ok = (count_ok / count) * 100;
+  -var percent_pending = (count_pending / count) * 100;
   h1.bars
+    = count + ' strings, '
     = count_ok + ' translated, '
     = count_pending + ' pending, '
-    = count + ' total'
+    = count - count_ok - count_pending + ' missing'
   div.bars
     a.ok(href: '/' + locale + '/translated/', style: 'width:' + percent_ok + '%;') &nbsp
     a.pending(href: '/' + locale + '/untranslated/', style: 'width:' + (percent_pending) + '%;') &nbsp
@@ -22,13 +23,12 @@ input(type: 'hidden', name: 'base_locale', value: dialect.config('base_locale'),
 .clearer
 
 -each translation in translations
-  -var stat = translation.translation ? (translation.locale.split('-')[0] === 'pending' ? 'pending' : 'ok') : 'missing';
+  -var stat = translation.translation ? (translation.approved ? 'ok' : 'pending') : 'missing';
   form(action: '/' + locale + '/translate/', method: 'POST', class: stat, autocomplete: 'off')
     .badge
     input(type: 'hidden', name: 'original', value: translation.original)
     .original
       = translation.original
-      = translation.locale
     textarea.translation(name: 'translation')= translation.translation || ''
 
     .options
@@ -38,12 +38,10 @@ input(type: 'hidden', name: 'base_locale', value: dialect.config('base_locale'),
         span autotranslate
       a.clean(href: '#')
         span clean
-      -if (translation.locale !== locale)
-        a.approve(href: '#')
-          span approve
-      -else
-        a.reject(href: '#')
-          span reject
+      a.reject(href: '#')
+        span reject
+      a.approve(href: '#')
+        span approve
     .meta
       -if (translation.context)
         span.context
@@ -55,3 +53,5 @@ input(type: 'hidden', name: 'base_locale', value: dialect.config('base_locale'),
           |  Plural form:
           = translation.plural
   .clearer
+
+!= paginator

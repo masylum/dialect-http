@@ -5,6 +5,7 @@
   "author": "Pau Ramon <masylum@gmail.com>",
   "dependencies": {
     "dialect": ">=1.0.0",
+    "paginate-js": ">=0.0.1",
     "connect": ">=1.0.0",
     "colors": ">=0.3.0",
     "express": ">=2.0.0",

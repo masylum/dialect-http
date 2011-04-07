@@ -57,9 +57,9 @@ nav#header ul li a.selected{
   border-top: 1px solid #aaa;
   border-bottom:1px solid #ccc;
   border-right: 1px solid #ccc;
-  -moz-box-shadow:   inset -1px -1px 0px #fff;
-  -webkit-box-shadow:inset -1px -1px 0px #fff;
-  box-shadow:        inset -1px -1px 0px #fff;
+  -moz-box-shadow:   1px 1px 0px #fff;
+  -webkit-box-shadow:1px 1px 0px #fff;
+  box-shadow:        1px 1px 0px #fff;
 }
 
 h1#breadcrumbs a {
@@ -166,6 +166,26 @@ textarea.translation {
   border-right: 1px solid #fff;
 }
 
+label {
+  width: 150px;
+  display: block;
+  padding-right: 15px;
+}
+
+input {
+  font-family: 'Monaco', 'Bitstream Vera Sans Mono', 'monospace';
+  font-size:12px;
+  padding:5px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius:    2px;
+  border-radius:         2px;
+  border-top: 1px solid #bcd;
+  border-left:1px solid #bcd;
+  border-bottom:1px solid #fff;
+  border-right: 1px solid #fff;
+  margin-bottom: 10px;
+}
+
 .original {
   background: rgba(0, 0, 0, 0.1);
 }
@@ -189,7 +209,8 @@ textarea.translation:focus {
   width:120px;
 }
 
-.options a {
+.options a,
+input.button {
   background: transparent url(/images/cool_button.png) repeat-x top left;
   padding: 3px 3px 3px 0px;
   display: block;
@@ -227,16 +248,21 @@ form .options a span {
   padding-left:24px;
 }
 
-form.pending .options a.clean,
-form.pending .options a.approve,
-form.pending .options a.reject {
-  visibility: hidden;
+form.missing .options a.clean,
+form.missing .options a.approve,
+form.missing .options a.reject {
+  display: none;
 }
 
 form.ok .options a.clean,
 form.ok .options a.approve,
 form.ok .options a.reject {
-  visibility: visible;
+  display: block;
+}
+
+form.ok .options a.approve,
+form.pending .options a.reject {
+  display: none;
 }
 
 form .options a.get_original span {
@@ -257,4 +283,70 @@ form .options a.approve span {
 
 form .options a.reject span{
   background:url("/images/locked.png") no-repeat scroll 0 50% transparent;
+}
+
+.paginator {
+  text-align: center;
+  margin: 20px 0px;
+}
+
+.paginator a {
+  display:inline-block;
+  padding:5px 10px;
+  margin:0px 3px;
+  color: #666;
+  text-shadow: 0px 1px 0px solid #fff;
+  text-decoration: none;
+  background: #e8e8e8 url(/images/button.png) repeat-x top left;
+  border-left:1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-bottom:1px solid #aaa;
+  border-right: 1px solid #aaa;
+  -webkit-border-radius: 2px;
+  -moz-border-radius:    2px;
+  border-radius:         2px;
+  -moz-box-shadow:   inset 1px 1px 0px #fff, 1px 1px 1px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow:inset 1px 1px 0px #fff, 1px 1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow:        inset 1px 1px 0px #fff, 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.paginator span {
+  display:inline-block;
+  padding:5px 10px;
+  margin:0px 3px;
+  color: #666;
+  text-shadow: 0px 1px 0px solid #fff;
+  text-decoration: none;
+  position: relative;
+  top: 1px;
+  background: #e8e8e8 url(/images/button_pressed.png) repeat-x top left;
+  border-left:1px solid #aaa;
+  border-top: 1px solid #aaa;
+  border-bottom:1px solid #ccc;
+  border-right: 1px solid #ccc;
+  -moz-box-shadow:   1px 1px 0px #fff;
+  -webkit-box-shadow:1px 1px 0px #fff;
+  box-shadow:        1px 1px 0px #fff;
+}
+
+.box {
+  padding: 20px;
+}
+
+.box h2{
+  text-transform: uppercase;
+  letter-spacing: 1.2;
+  font-size: 18px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.box.error {
+  color: #fff;
+  background: #b22;
+  border:5px solid #c22;
+  -moz-box-shadow:   inset 1px 1px 2px #d44, 0px 0px 3px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow:inset 1px 1px 2px #d44, 0px 0px 3px rgba(0, 0, 0, 0.3);
+  box-shadow:        inset 1px 1px 2px #d44, 0px 0px 3px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
 }

@@ -1,6 +1,5 @@
-
 /*
- * Dialect
+ * dialect-http
  * Copyright(c) Pau Ramon <masylum@gmail.com>
  * (MIT Licensed)
  */
@@ -13,6 +12,7 @@ var DIALECT_HTTP = {},
     dialect = require('../../dialect'),
 
     _lib_path = require('path').join(__dirname, '..', 'lib'),
+    _controllers_path = require('path').join(_lib_path, 'controllers'),
     _utils = require(_lib_path + '/utils'),
     _usage = 'Usage:'.bold + ' dialect-http [options]\n' +
              'Options'.bold + ':\n' +
@@ -35,12 +35,51 @@ var DIALECT_HTTP = {},
       }
 
       return s;
+    },
+
+    _authenticateStrategy = function (options) {
+      return function (req, res, callback) {
+        var STRATEGY = {name: 'form'},
+
+            failed_validation = function (req, res, uri) {
+              res.redirect('/auth/form?redirect_url=' + uri, 303);
+            },
+
+            validate_credentials = function (scope, req, res, callback) {
+              console.log(options.users);
+              var user = options.users.some(function (user) {
+                return user.username === req.param('username') && user.password === req.param('password');
+              });
+              console.log(user);
+
+              if (user) {
+                scope.success(user, callback);
+              } else {
+                scope.fail(callback);
+              }
+            };
+
+        STRATEGY.authenticate = function (req, res, callback) {
+          console.log(req);
+          if (req.param('username') && req.param('password')) {
+            validate_credentials(this, req, res, callback);
+          } else {
+            failed_validation(req, res, req.url);
+          }
+        };
+
+        return STRATEGY;
+      };
     };
 
 DIALECT_HTTP.options = {
   title: 'dialect-http',
-  username: 'admin',
-  password: 'admin',
+  users: [
+    {
+      username: 'admin',
+      password: 'admin'
+    }
+  ],
   port: 3001,
   dialect: {
     locales: ['en', 'es', 'de', 'fr', 'pt'],
@@ -51,6 +90,16 @@ DIALECT_HTTP.options = {
 DIALECT_HTTP.app = express.createServer();
 DIALECT_HTTP.dialect = dialect.dialect(DIALECT_HTTP.options.dialect);
 
+DIALECT_HTTP.authenticate = function (req, res, next) {
+  if (req.session.auth && req.session.auth.user) {
+    req.user = req.session.auth.user;
+    next();
+  } else {
+    req.flash('error', 'Please, login');
+    res.redirect('/public/users/login?redirect_url=' + req.url, 303);
+  }
+};
+
 DIALECT_HTTP.run = function () {
   var app = DIALECT_HTTP.app,
       dialect = DIALECT_HTTP.dialect,
@@ -58,38 +107,38 @@ DIALECT_HTTP.run = function () {
       express_dialect = {dynamic_helpers: {}};
 
   app.configure(function () {
+    app.use(express.favicon());
     app.set('views', _lib_path + '/views');
     app.set('view engine', 'jade');
     app.use(express.bodyParser());
-    //app.use(express.compiler({
-    //  src: _lib_path + '/public/stylesheets',
-    //  dest: 'public',
-    //  enable: ['less'],
-    //  autocompile: true
-    //}));
     app.use(express.cookieParser());
-    app.use(express.session({secret: _generateRandomSecret()}));
-    app.use(express.favicon());
+
+    app.use(express.session({
+      cookie: {maxAge: 60000 * 20}, // 20 minutes
+      secret: _generateRandomSecret(),
+      store: require('connect-mongodb')(options.dialect.store.mongodb)
+    }));
+
     app.use(express['static'](_lib_path + '/public'));
+    app.use(connect_auth([_authenticateStrategy(options)]));
     app.use(app.router);
-    // auth
-    //app.use(connect_auth([connect_auth.Basic({validatePassword: function (username, password, cool, fail) {
-    //  if (username === options.username && password === options.password) {
-    //    cool();
-    //  } else {
-    //    fail();
-    //  }
-    //}})]));
+
   });
 
   app.helpers(require(_lib_path + '/helpers/helpers')({dialect: dialect, title: options.title}));
   app.dynamicHelpers(require(_lib_path + '/helpers/dynamic'));
 
-  require(_lib_path + '/app')(DIALECT_HTTP);
+  // Controllers
+  require(_controllers_path + '/app')(DIALECT_HTTP);
+  require(_controllers_path + '/auth')(DIALECT_HTTP);
+  require(_controllers_path + '/translate')(DIALECT_HTTP);
 
   console.log('Setting up the store ...'.grey);
 
   dialect.connect(function (error, data) {
+    if (error) {
+      return console.error(('Error connecting to the dialect store: "' + error.message + '"').red);
+    }
     app.listen(options.port);
     console.log('Listening port '.green + (options.port).toString().yellow);
   });
