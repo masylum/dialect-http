@@ -9,6 +9,7 @@ input(type: 'hidden', name: 'base_locale', value: dialect.config('base_locale'),
 -else if (locale !== dialect.config('base_locale'))
   -var percent_ok = (count_ok / count) * 100;
   -var percent_pending = (count_pending / count) * 100;
+  -var percent_missing = (count_missing / count) * 100;
   h1.bars
     = count + ' strings, '
     = count_ok + ' translated, '
@@ -16,8 +17,8 @@ input(type: 'hidden', name: 'base_locale', value: dialect.config('base_locale'),
     = count - count_ok - count_pending + ' missing'
   div.bars
     a.ok(href: '/' + locale + '/translated/', style: 'width:' + percent_ok + '%;') &nbsp
-    a.pending(href: '/' + locale + '/untranslated/', style: 'width:' + (percent_pending) + '%;') &nbsp
-    a.missing(href: '/' + locale + '/untranslated/', style: 'width:' + (100 - percent_ok - percent_pending) + '%;') &nbsp
+    a.pending(href: '/' + locale + '/untranslated/', style: 'width:' + percent_pending + '%;') &nbsp
+    a.missing(href: '/' + locale + '/untranslated/', style: 'width:' + percent_missing + '%;') &nbsp
   .clearer
 
 .clearer
@@ -25,8 +26,7 @@ input(type: 'hidden', name: 'base_locale', value: dialect.config('base_locale'),
 -each translation in translations
   -var stat = translation.translation ? (translation.approved ? 'ok' : 'pending') : 'missing';
   form(action: '/' + locale + '/translate/', method: 'POST', class: stat, autocomplete: 'off')
-    .badge
-    input(type: 'hidden', name: 'original', value: translation.original)
+    input(type: 'hidden', name: 'id', value: translation._id)
     .original
       = translation.original
     textarea.translation(name: 'translation')= translation.translation || ''

@@ -7,11 +7,23 @@ nav#header {
   height:55px;
   margin-bottom:20px;
 }
+
+nav#header .wrapper{
+  position: relative;
+}
+
 nav#header #logo {
   font-family: 'Georgia', 'Times New Roman', 'serif';
   font-size: 36px;
   float:left;
   text-shadow: 1px 1px 0px #bbb;
+  margin-top: 10px;
+}
+
+nav#header #logout {
+  position: absolute;
+  top:5px;
+  right:5px;
 }
 
 nav#header ul{
@@ -78,24 +90,25 @@ div.bars {
   width: 100%;
   background: #e8e8e8 url(/images/button_pressed.png) repeat-x top left;
   margin-bottom: 20px;
+  margin-top: 5px;
 }
 
 div.bars a {
   float:left;
-  height:23px;
+  height:18px;
   text-decoration:none;
 }
 
 div.bars a.ok {
-  background:url("/images/bar-ok.png") repeat-x scroll left top;
+  background:url("/images/form-ok.png") repeat-x scroll left top;
 }
 
 div.bars a.pending {
-  background:url("/images/bar-pending.png") repeat-x scroll left top;
+  background:url("/images/form-pending.png") repeat-x scroll left top;
 }
 
 div.bars a.missing {
-  background:url("/images/bar-missing.png") repeat-x scroll left top;
+  background:url("/images/form-missing.png") repeat-x scroll left top;
 }
 
 .wrapper {
@@ -114,38 +127,30 @@ h2.title {
 form {
   padding:10px;
   margin:10px 0px 0px 0px;
-  background:#f9f9f9;
   -webkit-border-radius: 2px;
   -moz-border-radius:    2px;
   border-radius:         2px;
   position:relative;
   float:left;
-  border: 1px solid #bbc;
+  border: 1px solid #bbb;
   width: 938px;
-  background: transparent url(/images/form.png) repeat-x top left;
-  -moz-box-shadow:   inset 1px 1px 0px #fff, 0px 0px 3px rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow:inset 1px 1px 0px #fff, 0px 0px 3px rgba(0, 0, 0, 0.1);
-  box-shadow:        inset 1px 1px 0px #fff, 0px 0px 3px rgba(0, 0, 0, 0.1);
+  height: 94px;
+  -moz-box-shadow:   inset 1px 1px 0px #fff;
+  -webkit-box-shadow:inset 1px 1px 0px #fff;
+  box-shadow:        inset 1px 1px 0px #fff;
+  background: transparent url(/images/form-ok.png) repeat-x top left;
 }
 
-form .badge {
-  left:-1px;
-  top: -1px;
-  position:absolute;
-  width: 20px;
-  height: 20px;
+form.ok {
+  background: transparent url(/images/form-ok.png) repeat-x top left;
 }
 
-form.ok .badge {
-  background:url("/images/ok.png") no-repeat scroll left top transparent;
+form.pending {
+  background: transparent url(/images/form-pending.png) repeat-x top left;
 }
 
-form.missing .badge{
-  background:url("/images/missing.png") no-repeat scroll left top transparent;
-}
-
-form.pending .badge{
-  background:url("/images/pending.png") no-repeat scroll left top transparent;
+form.missing {
+  background: transparent url(/images/form-missing.png) repeat-x top left;
 }
 
 .original ,
@@ -160,10 +165,16 @@ textarea.translation {
   -webkit-border-radius: 2px;
   -moz-border-radius:    2px;
   border-radius:         2px;
-  border-top: 1px solid #bcd;
-  border-left:1px solid #bcd;
-  border-bottom:1px solid #fff;
-  border-right: 1px solid #fff;
+  border: 1px solid rgba(0,0,0,0.2);
+}
+
+textarea.translation {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.original {
+  border: 1px solid rgba(90,90,90,0.1);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 label {
@@ -179,15 +190,8 @@ input {
   -webkit-border-radius: 2px;
   -moz-border-radius:    2px;
   border-radius:         2px;
-  border-top: 1px solid #bcd;
-  border-left:1px solid #bcd;
-  border-bottom:1px solid #fff;
-  border-right: 1px solid #fff;
+  border: 1px solid #ccc;
   margin-bottom: 10px;
-}
-
-.original {
-  background: rgba(0, 0, 0, 0.1);
 }
 
 textarea.translation {
@@ -216,32 +220,32 @@ input.button {
   display: block;
   margin: 0px;
   font-size: 11px;
-  color: #fff;
-  text-shadow: 0px 1px 0px #26a;
+  color: #666;
+  text-shadow: 0px 1px 0px #ddd;
   text-decoration: none;
   margin-bottom: 2px;
-  border: 1px solid #48c;
+  border: 1px solid #888;
   -webkit-border-radius: 2px;
   -moz-border-radius:    2px;
   border-radius:         2px;
-  -moz-box-shadow:   inset 1px 1px 0px rgba(255, 255, 255, 0.4), 0px 0px 3px rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow:inset 1px 1px 0px rgba(255, 255, 255, 0.4), 0px 0px 3px rgba(0, 0, 0, 0.2);
-  box-shadow:        inset 1px 1px 0px rgba(255, 255, 255, 0.4), 0px 0px 3px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow:   inset 1px 1px 0px rgba(255, 255, 255, 0.4);
+  -webkit-box-shadow:inset 1px 1px 0px rgba(255, 255, 255, 0.4);
+  box-shadow:        inset 1px 1px 0px rgba(255, 255, 255, 0.4);
 }
 
 .options a:hover {
-  text-shadow: 0px 1px 0px #048;
-  border: 1px solid #159;
-  -moz-box-shadow:   inset 1px 1px 0px rgba(255, 255, 255, 0.7), 0px 0px 3px rgba(0, 0, 0, 0.4);
-  -webkit-box-shadow:inset 1px 1px 0px rgba(255, 255, 255, 0.7), 0px 0px 3px rgba(0, 0, 0, 0.4);
-  box-shadow:        inset 1px 1px 0px rgba(255, 255, 255, 0.7), 0px 0px 3px rgba(0, 0, 0, 0.4);
+  background: none;
+  text-shadow: none;
+  -moz-box-shadow:   inset 1px 1px 0px rgba(255, 255, 255, 0.7);
+  -webkit-box-shadow:inset 1px 1px 0px rgba(255, 255, 255, 0.7);
+  box-shadow:        inset 1px 1px 0px rgba(255, 255, 255, 0.7);
 }
 
 .meta {
   bottom:5px;
   position:absolute;
   text-shadow: 1px 1px 0px #fff;
-  color: #89a;
+  color: #999;
 }
 
 form .options a span {
@@ -274,15 +278,15 @@ form .options a.autotranslate span {
 }
 
 form .options a.clean span {
-  background:url("/images/x.png") no-repeat scroll 0 50% transparent;
+  background:url("/images/trash.png") no-repeat scroll 0 50% transparent;
 }
 
 form .options a.approve span {
-  background:url("/images/unlocked.png") no-repeat scroll 0 50% transparent;
+  background:url("/images/checkmark.png") no-repeat scroll 0 50% transparent;
 }
 
 form .options a.reject span{
-  background:url("/images/locked.png") no-repeat scroll 0 50% transparent;
+  background:url("/images/x.png") no-repeat scroll 0 50% transparent;
 }
 
 .paginator {

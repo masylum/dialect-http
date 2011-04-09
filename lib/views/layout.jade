@@ -12,6 +12,7 @@ html
     nav#header
       .wrapper
         #logo= options.title || 'dialect'
+        a#logout(href: '/auth/logout') logout
         ul#locales
           -each loc in dialect.config('locales')
             -if (loc !== dialect.config('base_locale'))
