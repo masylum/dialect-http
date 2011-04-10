@@ -14,7 +14,7 @@ html
         #logo= options.title || 'dialect'
         a#logout(href: '/auth/logout') logout
         ul#locales
-          -each loc in dialect.config('locales')
+          -each loc in authorized_locales
             -if (loc !== dialect.config('base_locale'))
               li
                 a(href: '/' + loc + '/', class: loc === locale ? 'selected' : '')
@@ -23,5 +23,15 @@ html
 
     .wrapper
       #content
-        -//!= flashMessages()
+
+        -messages = flash()
+        -if (Object.keys(messages).length)
+          #flash_messages
+            -each msgs, type in messages
+              div(class: 'box ' + type)
+                h2= type
+                ul
+                  -each msg in msgs
+                    li= msg
+
         != body

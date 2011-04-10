@@ -25,7 +25,7 @@ input(type: 'hidden', name: 'base_locale', value: dialect.config('base_locale'),
 
 -each translation in translations
   -var stat = translation.translation ? (translation.approved ? 'ok' : 'pending') : 'missing';
-  form(action: '/' + locale + '/translate/', method: 'POST', class: stat, autocomplete: 'off')
+  form(action: '/' + locale + '/translate/', method: 'POST', class: stat + (can_approve ? ' can_approve' : ''), autocomplete: 'off')
     input(type: 'hidden', name: 'id', value: translation._id)
     .original
       = translation.original

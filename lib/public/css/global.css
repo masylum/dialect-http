@@ -215,30 +215,27 @@ textarea.translation:focus {
 
 .options a,
 input.button {
-  background: transparent url(/images/cool_button.png) repeat-x top left;
+  background: transparent url(/images/button.png) repeat-x top left;
   padding: 3px 3px 3px 0px;
   display: block;
   margin: 0px;
   font-size: 11px;
-  color: #666;
-  text-shadow: 0px 1px 0px #ddd;
+  color: #777;
+  text-shadow: 0px 1px 0px #fff;
   text-decoration: none;
   margin-bottom: 2px;
-  border: 1px solid #888;
+  border: 1px solid #aaa;
   -webkit-border-radius: 2px;
   -moz-border-radius:    2px;
   border-radius:         2px;
-  -moz-box-shadow:   inset 1px 1px 0px rgba(255, 255, 255, 0.4);
-  -webkit-box-shadow:inset 1px 1px 0px rgba(255, 255, 255, 0.4);
-  box-shadow:        inset 1px 1px 0px rgba(255, 255, 255, 0.4);
+  -moz-box-shadow:   inset 1px 1px 0px #fff;
+  -webkit-box-shadow:inset 1px 1px 0px #fff;
+  box-shadow:        inset 1px 1px 0px #fff;
 }
 
 .options a:hover {
-  background: none;
-  text-shadow: none;
-  -moz-box-shadow:   inset 1px 1px 0px rgba(255, 255, 255, 0.7);
-  -webkit-box-shadow:inset 1px 1px 0px rgba(255, 255, 255, 0.7);
-  box-shadow:        inset 1px 1px 0px rgba(255, 255, 255, 0.7);
+  color: #555;
+  border: 1px solid #777;
 }
 
 .meta {
@@ -254,13 +251,15 @@ form .options a span {
 
 form.missing .options a.clean,
 form.missing .options a.approve,
+form.pending .options a.approve,
+form.ok .options a.reject,
 form.missing .options a.reject {
   display: none;
 }
 
 form.ok .options a.clean,
-form.ok .options a.approve,
-form.ok .options a.reject {
+form.pending.can_approve .options a.approve,
+form.ok.can_approve .options a.reject {
   display: block;
 }
 
