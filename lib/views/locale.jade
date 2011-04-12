@@ -2,15 +2,17 @@ input(type: 'hidden', name: 'current_locale', value: locale, id: 'current_locale
 input(type: 'hidden', name: 'base_locale', value: dialect.config('base_locale'), id: 'base_locale')
 
 -if (category !== 'All')
-  h1#breadcrumbs
+  h2#breadcrumbs
     a(href: '/' + locale + '/') All
     &raquo;
     = category
 -else if (locale !== dialect.config('base_locale'))
+  -// TODO: Move this crap
   -var percent_ok = (count_ok / count) * 100;
   -var percent_pending = (count_pending / count) * 100;
   -var percent_missing = (count_missing / count) * 100;
-  h1.bars
+
+  h3.bars
     = count + ' strings, '
     = count_ok + ' translated, '
     = count_pending + ' pending, '

@@ -1,0 +1,23 @@
+h1 Dashboard
+
+- each locale in dialect.config('locales')
+  -if(locale !== dialect.config('base_locale'))
+    h2= locale
+
+    -// TODO: Move this crap
+    -var stat = stats[locale] || {ok: 0, missing: 0, pending: 0};
+    -var count = stat.ok + stat.pending + stat.missing;
+    -var percent_ok = count ? (stat.ok / count) * 100 : 0;
+    -var percent_pending = count ? (stat.pending / count) * 100 : 0;
+    -var percent_missing = count ? (stat.missing / count) * 100 : 0;
+
+    h3.bars
+      = count + ' strings, '
+      = stat.ok + ' translated, '
+      = stat.pending + ' pending, '
+      = count - stat.ok - stat.pending + ' missing'
+    div.bars
+      a.ok(href: '/' + locale + '/translated/', style: 'width:' + percent_ok + '%;') &nbsp
+      a.pending(href: '/' + locale + '/untranslated/', style: 'width:' + percent_pending + '%;') &nbsp
+      a.missing(href: '/' + locale + '/untranslated/', style: 'width:' + percent_missing + '%;') &nbsp
+    .clearer

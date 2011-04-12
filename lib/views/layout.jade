@@ -11,7 +11,7 @@ html
   body
     nav#header
       .wrapper
-        #logo= options.title || 'dialect'
+        a#logo(href: '/')= options.title || 'dialect'
         a#logout(href: '/auth/logout') logout
         ul#locales
           -each loc in authorized_locales
