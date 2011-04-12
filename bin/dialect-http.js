@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 /*
  * dialect-http
  * Copyright(c) Pau Ramon <masylum@gmail.com>
