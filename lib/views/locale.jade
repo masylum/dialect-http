@@ -18,9 +18,9 @@ input(type: 'hidden', name: 'base_locale', value: dialect.config('base_locale'),
     = count_pending + ' pending, '
     = count - count_ok - count_pending + ' missing'
   div.bars
-    a.ok(href: '/' + locale + '/translated/', style: 'width:' + percent_ok + '%;') &nbsp
-    a.pending(href: '/' + locale + '/untranslated/', style: 'width:' + percent_pending + '%;') &nbsp
-    a.missing(href: '/' + locale + '/untranslated/', style: 'width:' + percent_missing + '%;') &nbsp
+    a.ok(href: '/' + locale + '/ok/', style: 'width:' + percent_ok + '%;') &nbsp
+    a.pending(href: '/' + locale + '/pending/', style: 'width:' + percent_pending + '%;') &nbsp
+    a.missing(href: '/' + locale + '/missing/', style: 'width:' + percent_missing + '%;') &nbsp
   .clearer
 
 .clearer
