@@ -42,7 +42,7 @@ while (_args.length) {
   case '--config':
     arg = _args.shift();
     if (arg) {
-      if (arg[0] != '/') {
+      if (arg[0] !== '/') {
         arg = path.normalize(path.join(process.cwd(), arg));
       }
       _dialect_http.options = _utils.merge(_dialect_http.options, require(arg));

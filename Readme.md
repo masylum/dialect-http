@@ -20,6 +20,7 @@ This module is builtin upon [dialect](http://github.com/masylum/dialect/) using 
     - `can_approve`: Approval permission within user's locales. Defaults to 'true'
   - `port`: Port number where the application will be running.
   - `dialect`: Object containing dialect options.
+  - `sessions_db`: mongodb connection string.
 
 Check [dialect](http://github.com/masylum/dialect/) documentation to see which dialect options can you pass.
 
