@@ -6,6 +6,14 @@ This module is builtin upon [dialect](http://github.com/masylum/dialect/) using 
 
 <img src = "https://github.com/masylum/express-dialect/raw/master/lib/public/images/example.jpg" border = "0" />
 
+## Features
+
+- Easy to configure.
+- Users with roles.
+- Autotranslate.
+- Approval system.
+- Context and plurals handling.
+
 ## Installation
 
     npm install dialect-http
@@ -19,8 +27,8 @@ This module is builtin upon [dialect](http://github.com/masylum/dialect/) using 
     - `locales`: Locales that this user can edit. Defaults to all.
     - `can_approve`: Approval permission within user's locales. Defaults to 'true'
   - `port`: Port number where the application will be running.
-  - `dialect`: Object containing dialect options.
   - `sessions_db`: mongodb connection string.
+  - `dialect`: Object containing dialect options.
 
 Check [dialect](http://github.com/masylum/dialect/) documentation to see which dialect options can you pass.
 
