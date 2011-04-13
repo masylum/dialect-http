@@ -17,7 +17,7 @@ html
           -each loc in authorized_locales
             -if (loc !== dialect.config('base_locale'))
               li
-                a(href: '/' + loc + '/', class: loc === locale ? 'selected' : '')
+                a(href: '/' + loc + '/all/', class: loc === locale ? 'selected' : '')
                   = loc
     .clearer
 
