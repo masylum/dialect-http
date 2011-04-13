@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 /*
  * dialect-http
  * Copyright(c) Pau Ramon <masylum@gmail.com>
@@ -6,7 +7,8 @@
 
 require('colors');
 
-var _lib_path = require('path').join(__dirname, '..', 'lib'),
+var path = require('path'),
+    _lib_path = path.join(__dirname, '..', 'lib'),
 
     _utils = require(_lib_path + '/utils'),
     _dialect_http = require(_lib_path + '/dialect_http'),
@@ -40,6 +42,9 @@ while (_args.length) {
   case '--config':
     arg = _args.shift();
     if (arg) {
+      if (arg[0] != '/') {
+        arg = path.normalize(path.join(process.cwd(), arg));
+      }
       _dialect_http.options = _utils.merge(_dialect_http.options, require(arg));
     } else {
       throw Error('--config requires an path');
