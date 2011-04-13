@@ -96,8 +96,8 @@ html { overflow-y: scroll; }
 /* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
 a:hover, a:active { outline: none; }
 
-a, a:active, a:visited { color: #607890; }
-a:hover { color: #036; }
+a, a:active, a:visited { color: #58f; }
+a:hover { color: #69f; }
 
 
 ul, ol { margin-left: 1.8em; }

@@ -99,23 +99,16 @@ nav#header ul li a.selected{
   box-shadow:        1px 1px 0px #fff;
 }
 
-h1#breadcrumbs a {
-  color:#7af;
-  text-decoration:none;
-}
-
 h1.bars {
-  color:#999;
-  font-weight:normal;
+  margin-bottom: 0px;
 }
 
 div.bars {
-  border: 1px solid #bbb;
+  border: none;
   float:left;
-  width: 100%;
+  width: 960px;
   background: #e8e8e8 url(/images/button_pressed.png) repeat-x top left;
   margin-bottom: 20px;
-  margin-top: 5px;
 }
 
 div.bars a {
@@ -245,7 +238,7 @@ input.button {
   display: block;
   margin: 0px;
   font-size: 11px;
-  color: #777;
+  color: #555;
   text-shadow: 0px 1px 0px #fff;
   text-decoration: none;
   margin-bottom: 2px;
@@ -266,8 +259,7 @@ input.button {
 .meta {
   bottom:5px;
   position:absolute;
-  text-shadow: 1px 1px 0px #fff;
-  color: #999;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 form .options a span {

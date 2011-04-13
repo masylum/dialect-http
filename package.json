@@ -7,10 +7,11 @@
     "dialect": ">=1.0.0",
     "paginate-js": ">=0.0.1",
     "connect": ">=1.0.0",
+    "connect-mongodb": ">=0.2.2",
     "colors": ">=0.3.0",
     "express": ">=2.0.0",
-    "connect-auth": "0.2.1",
-    "connect-i18n": "0.0.1"
+    "funk": ">=1.0.1",
+    "connect-auth": ">=0.2.1",
   },
   "main": "./lib/express-dialect",
   "engines": { "node": ">= 0.4.0" }
