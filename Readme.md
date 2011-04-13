@@ -4,7 +4,7 @@ dialect-http is a web client to manage your dialect translations.
 
 This module is builtin upon [dialect](http://github.com/masylum/dialect/) using the mongodb store.
 
-<img src = "https://github.com/masylum/express-dialect/raw/master/lib/public/images/example.jpg" border = "0" />
+<img src = "https://github.com/masylum/express-dialect/raw/dialect-http/lib/public/images/example.jpg" border = "0" />
 
 ## Features
 
