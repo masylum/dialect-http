@@ -1,7 +1,7 @@
 {
   "name": "dialect-http",
   "description": "Backend to manage your dialect translations",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Pau Ramon <masylum@gmail.com>",
   "dependencies": {
     "dialect": ">=1.0.0",
