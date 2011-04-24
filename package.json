@@ -1,8 +1,11 @@
 {
   "name": "dialect-http",
+  "version": "1.0.2",
   "description": "Backend to manage your dialect translations",
-  "version": "1.0.1",
   "author": "Pau Ramon <masylum@gmail.com>",
+  "bin": {
+    "dialect-http": "./bin/dialect-http"
+  },
   "dependencies": {
     "dialect": ">=1.0.0",
     "paginate-js": ">=0.0.1",
@@ -13,6 +16,5 @@
     "funk": ">=1.0.1",
     "connect-auth": ">=0.2.1"
   },
-  "main": "./lib/express-dialect",
   "engines": { "node": ">= 0.4.0" }
 }
