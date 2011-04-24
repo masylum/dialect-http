@@ -16,7 +16,10 @@ This module is builtin upon [dialect](http://github.com/masylum/dialect/) using 
 
 ## Installation
 
-    npm install dialect-http
+Install it using npm. It will create a binary on your `/usr/local/`.
+
+    npm install dialect-http -g
+
 
 ## Configuration options
 
