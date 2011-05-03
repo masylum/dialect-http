@@ -6,6 +6,8 @@ This module is builtin upon [dialect](http://github.com/masylum/dialect/) using 
 
 <img src = "https://github.com/masylum/dialect-http/raw/master/lib/public/images/example.jpg" border = "0" />
 
+[Tutorial + screencast](http://happynerds.tumblr.com/post/5161855930/dealing-with-translations-in-nodejs)
+
 ## Features
 
 - Easy to configure.
