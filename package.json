@@ -7,14 +7,15 @@
     "dialect-http": "./bin/dialect-http"
   },
   "dependencies": {
-    "dialect": ">=1.0.0",
-    "paginate-js": ">=0.0.1",
     "connect": ">=1.0.0",
-    "connect-mongodb": ">=0.2.2",
+    "connect-auth": ">=0.2.1",
+    "connect-mongodb": ">=0.4.0",
     "colors": ">=0.3.0",
+    "dialect": "1.0.1",
     "express": ">=2.0.0",
-    "funk": ">=1.0.1",
-    "connect-auth": ">=0.2.1"
+    "funk": "1.0.1",
+    "jade": "0.11.0",
+    "paginate-js": "0.0.1"
   },
   "engines": { "node": ">= 0.4.0" }
 }
