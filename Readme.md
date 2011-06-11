@@ -22,7 +22,6 @@ Install it using npm. It will create a binary on your `/usr/local/`.
 
     npm install dialect-http -g
 
-
 ## Configuration options
 
   - `title`: Custom title for the backend.
@@ -44,7 +43,7 @@ Easy!
 First edit a configuration file like this:
 
     // dialect-http.js
-    exports = {
+    module.exports = {
       title: 'My app',
       users: [
         { username: 'foo',
