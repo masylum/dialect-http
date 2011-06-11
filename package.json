@@ -7,12 +7,12 @@
     "dialect-http": "./bin/dialect-http"
   },
   "dependencies": {
-    "connect": ">=1.0.0",
-    "connect-auth": ">=0.2.1",
-    "connect-mongodb": ">=0.4.0",
-    "colors": ">=0.3.0",
-    "dialect": "1.0.1",
-    "express": ">=2.0.0",
+    "connect": "1.4.3",
+    "connect-auth": "0.2.2",
+    "connect-mongodb": "0.4.0",
+    "colors": "0.5.0",
+    "dialect": "1.0.2",
+    "express": "2.3.11",
     "funk": "1.0.1",
     "jade": "0.11.0",
     "paginate-js": "0.0.1"
