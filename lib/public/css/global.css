@@ -294,6 +294,10 @@ form .options a.autotranslate span {
 }
 
 form .options a.clean span {
+  background:url("/images/left.png") no-repeat scroll 0 50% transparent;
+}
+
+form .options a.delete span {
   background:url("/images/trash.png") no-repeat scroll 0 50% transparent;
 }
 
