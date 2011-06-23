@@ -47,6 +47,8 @@ input(type= 'hidden', name= 'base_locale', value= dialect.config('base_locale'),
         span reject
       a.approve(href= '#')
         span approve
+      a.delete(href="#")
+        span delete
     .meta
       -if (translation.context)
         span.context
