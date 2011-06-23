@@ -6,7 +6,7 @@ input(type= 'hidden', name= 'base_locale', value= dialect.config('base_locale'),
     a(href= '/' + locale + '/all/') All
     |  &raquo;
     = category
--else if (locale !== dialect.config('base_locale'))
+- if (locale !== dialect.config('base_locale'))
   -// TODO: Move this crap
   -var percent_ok = count ? (count_ok / count) * 100 : 0;
   -var percent_pending = count ? (count_pending / count) * 100 : 0;
