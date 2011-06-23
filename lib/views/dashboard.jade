@@ -18,6 +18,6 @@ h1 Dashboard
       = count - stat.ok - stat.pending + ' missing'
     div.bars
       a.ok(href: '/' + locale + '/ok/', style: 'width:' + percent_ok + '%;') &nbsp
-      a.pending(href: '/' + locale + '/missing/', style: 'width:' + percent_pending + '%;') &nbsp
-      a.missing(href: '/' + locale + '/pending/', style: 'width:' + percent_missing + '%;') &nbsp
+      a.pending(href: '/' + locale + '/missing/', style: 'width=' + percent_pending + '%;') &nbsp
+      a.missing(href: '/' + locale + '/pending/', style: 'width=' + percent_missing + '%;') &nbsp
     .clearer

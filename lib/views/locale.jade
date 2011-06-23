@@ -1,9 +1,9 @@
-input(type: 'hidden', name: 'current_locale', value: locale, id: 'current_locale')
-input(type: 'hidden', name: 'base_locale', value: dialect.config('base_locale'), id: 'base_locale')
+input(type= 'hidden', name= 'current_locale', value= locale, id= 'current_locale')
+input(type= 'hidden', name= 'base_locale', value= dialect.config('base_locale'), id= 'base_locale')
 
 -if (category !== 'All')
   h1#breadcrumbs
-    a(href: '/' + locale + '/all/') All
+    a(href= '/' + locale + '/all/') All
     |  &raquo;
     = category
 -else if (locale !== dialect.config('base_locale'))
@@ -15,37 +15,37 @@ input(type: 'hidden', name: 'base_locale', value: dialect.config('base_locale'),
   h1.bars
     = count + ' strings, '
     = count_ok + ' '
-    a.ok(href: '/' + locale + '/ok/') ok
+    a.ok(href= '/' + locale + '/ok/') ok
     = ', ' + count_pending + ' '
-    a.pending(href: '/' + locale + '/pending/') pending
+    a.pending(href= '/' + locale + '/pending/') pending
     = ', ' + (count - count_ok - count_pending) + ' '
-    a.missing(href: '/' + locale + '/missing/') missing
+    a.missing(href= '/' + locale + '/missing/') missing
   div.bars
-    a.ok(href: '/' + locale + '/ok/', style: 'width:' + percent_ok + '%;') &nbsp
-    a.pending(href: '/' + locale + '/pending/', style: 'width:' + percent_pending + '%;') &nbsp
-    a.missing(href: '/' + locale + '/missing/', style: 'width:' + percent_missing + '%;') &nbsp
+    a.ok(href= '/' + locale + '/ok/', style= 'width:' + percent_ok + '%;') &nbsp
+    a.pending(href= '/' + locale + '/pending/', style= 'width:' + percent_pending + '%;') &nbsp
+    a.missing(href= '/' + locale + '/missing/', style= 'width:' + percent_missing + '%;') &nbsp
   .clearer
 
 .clearer
 
 -each translation in translations
   -var stat = translation.translation ? (translation.approved ? 'ok' : 'pending') : 'missing';
-  form(action: '/' + locale + '/translate/', method: 'POST', class: stat + (can_approve ? ' can_approve' : ''), autocomplete: 'off')
-    input(type: 'hidden', name: 'id', value: translation._id)
+  form(action= '/' + locale + '/translate/', method= 'POST', class= stat + (can_approve ? ' can_approve' : ''), autocomplete= 'off')
+    input(type= 'hidden', name= 'id', value= translation._id)
     .original
       = translation.original
-    textarea.translation(name: 'translation')= translation.translation || ''
+    textarea.translation(name= 'translation')= translation.translation || ''
 
     .options
-      a.get_original(href: '#')
+      a.get_original(href= '#')
         span get original
-      a.autotranslate(href: '#')
+      a.autotranslate(href= '#')
         span autotranslate
-      a.clean(href: '#')
+      a.clean(href= '#')
         span clean
-      a.reject(href: '#')
+      a.reject(href= '#')
         span reject
-      a.approve(href: '#')
+      a.approve(href= '#')
         span approve
     .meta
       -if (translation.context)

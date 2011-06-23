@@ -1,12 +1,12 @@
-form(action: '/auth/form/', method: 'post', style: 'width: 160px;margin: 0 auto;height:auto;')
+form(action= '/auth/form/', method= 'post', style= 'width= 160px;margin= 0 auto;height=auto;')
   fieldset
     .field
-      label(for: 'username') Email
-      input(id:  'username', name: 'username', value: '', type: 'text')
+      label(for= 'username') Email
+      input(id=  'username', name= 'username', value= '', type= 'text')
 
     .field
-      label(for: 'password') Password
-      input(id:  'password', name: 'password', value: '', type: 'password')
+      label(for= 'password') Password
+      input(id=  'password', name= 'password', value= '', type= 'password')
 
   .operations
-      input.button(type: 'submit', value: 'Login')
+      input.button(type= 'submit', value= 'Login')
