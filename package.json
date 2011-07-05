@@ -1,20 +1,21 @@
 {
   "name": "dialect-http",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "Backend to manage your dialect translations",
   "author": "Pau Ramon <masylum@gmail.com>",
   "bin": {
     "dialect-http": "./bin/dialect-http"
   },
   "dependencies": {
-    "connect": "1.4.3",
-    "connect-auth": "0.2.2",
-    "connect-mongodb": "0.4.0",
+    "connect": "1.5.1",
+    "connect-auth": "0.2.3",
+    "connect-mongodb": "1.0.0rc",
     "colors": "0.5.0",
     "dialect": "1.0.2",
-    "express": "2.3.11",
-    "funk": "1.0.1",
-    "jade": "0.11.0",
+    "express": "2.4.0",
+    "funk": "1.5.0",
+    "jade": "0.12.4",
+    "mongodb": "0.9.6-4",
     "paginate-js": "0.0.1"
   },
   "engines": { "node": ">= 0.4.0" }
