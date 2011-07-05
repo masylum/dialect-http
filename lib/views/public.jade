@@ -2,12 +2,12 @@
 html
   head
     title= title || ''
-    link(rel: 'stylesheet', href: '/css/reset.css' )
-    link(rel: 'stylesheet', href: '/css/global.css' )
-    script(src: 'http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js')
-    script(src: '/js/loading.js')
-    script(src: '/js/translate.js')
-    script(src: '/js/global.js')
+    link(rel= 'stylesheet', href= '/css/reset.css' )
+    link(rel= 'stylesheet', href= '/css/global.css' )
+    script(src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js')
+    script(src= '/js/loading.js')
+    script(src= '/js/translate.js')
+    script(src= '/js/global.js')
   body
     nav#header
       .wrapper
@@ -21,7 +21,7 @@ html
         -if (Object.keys(messages).length)
           #flash_messages
             -each msgs, type in messages
-              div(class: 'box ' + type)
+              div(class= 'box ' + type)
                 h2= type
                 ul
                   -each msg in msgs
