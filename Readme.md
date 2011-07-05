@@ -61,8 +61,9 @@ First edit a configuration file like this:
         locales: ['en', 'es'],
         store: {
           mongodb: {
-            collection: 'my_translations
+            collection: 'my_translations'
           }
+        }
       }
     }
 

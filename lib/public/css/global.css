@@ -152,7 +152,7 @@ form {
   float:left;
   border: 1px solid #bbb;
   width: 938px;
-  height: 94px;
+  height: 110px;
   -moz-box-shadow:   inset 1px 1px 0px #fff;
   -webkit-box-shadow:inset 1px 1px 0px #fff;
   box-shadow:        inset 1px 1px 0px #fff;
@@ -294,6 +294,10 @@ form .options a.autotranslate span {
 }
 
 form .options a.clean span {
+  background:url("/images/left.png") no-repeat scroll 0 50% transparent;
+}
+
+form .options a.delete span {
   background:url("/images/trash.png") no-repeat scroll 0 50% transparent;
 }
 
