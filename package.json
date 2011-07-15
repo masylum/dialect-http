@@ -15,7 +15,7 @@
     "express": "2.4.0",
     "funk": "1.5.0",
     "jade": "0.12.4",
-    "mongodb": "0.9.6-4",
+    "mongodb": "0.9.6-7",
     "paginate-js": "0.0.1"
   },
   "engines": { "node": ">= 0.4.0" }
